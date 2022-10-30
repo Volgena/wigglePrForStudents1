@@ -30,6 +30,7 @@ public class MainFactoryTest extends BasicFactoryTest {
 
     @Test(description = "Assert the main page is loaded and account icon is visible")
     public void assertAccountIconIsDisplayed() {
+        mainFactoryPage.clickOnTrustButton();
         boolean actualResult = mainFactoryPage.isAccountLinkDisplayed();
         Assert.assertEquals(actualResult, true, "Account link isn't visible");
     }

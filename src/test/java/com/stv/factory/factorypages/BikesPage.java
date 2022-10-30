@@ -9,10 +9,10 @@ public class BikesPage extends FactoryPage {
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
 
-    @FindBy(xpath = "/html/body/div[8]/footer/div/div/div[6]/div/div[5]/div/a")
-    private WebElement title;
+    @FindBy(xpath = "//a[text() = 'Bikes']")
+    private WebElement BikesButton;
 
-    @FindBy(xpath = "//*[@id=\"wiggle\"]/div/div[1]/div[3]/div/div/div[1]/div[1]/a/div[1]/div/div")
+    @FindBy(xpath = "//a[contains(@data-ga-label,'Week 23')]//span[@class ='shopNowTitle']"
     private WebElement ShopNow;
 
     @FindBy(xpath = "//*[@id=\"wiggle\"]/div/div[1]/div[3]/div/div/div[1]/div[1]")
@@ -24,20 +24,30 @@ public class BikesPage extends FactoryPage {
     @FindBy(xpath = "//*[@id=\"hr-search-guided-navigation\"]/div[2]/div/span[2]")
     private WebElement LessFilters;
 
-
+    public BikesPage(WebElement bikesButton) {
+        BikesButton = bikesButton;
     }
 
-    public static void IsOpened() {BikesPage.IsOpened();
+
+    public static boolean[] IsOpened() {BikesPage.IsOpened();
+        return new boolean[0];
+    }
+
+    public static boolean[] ShopNowDisplayed() {
+        return new boolean[0];
     }
 
 
-    public void Bikes() {
+    public void clickBikes() {
         Bikes.click();
     }
     public boolean InscriptionDisplayed(){
-        return title.isDisplayed();
+        return BikesButton.isDisplayed();
     }
     public void ShopNow() {
         ShopNow.click();
+    }
+
+    public void clickOnQuickBuyButton() {
     }
 }

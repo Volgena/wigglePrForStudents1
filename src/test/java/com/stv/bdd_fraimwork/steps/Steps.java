@@ -10,19 +10,18 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
 
 import java.util.concurrent.TimeUnit;
 
-import static com.stv.framework.core.lib.WigglePageURLs.LOGIN_URL;
 import static com.stv.framework.core.lib.WigglePageURLs.START_URL;
-
 public class Steps {
+
 
     String email = "volha@mail.ru";
     String password = "123456789 ";
-
 
 
     public static WebDriver getDriver() {
@@ -34,7 +33,8 @@ public class Steps {
     }
 
     MainFactoryPage mainFactoryPage = new MainFactoryPage();
-    BikesPage roadBikesPage = new BikesPage();
+    private WebElement bikesButton;
+    BikesPage roadBikesPage = new BikesPage(bikesButton);
     LoginPage loginPage = new LoginPage();
     AccountPage accountPage = new AccountPage();
 
@@ -64,46 +64,34 @@ public class Steps {
 
     }
 
-    @When("^choose any bike$")
-    public void chooseAnyBike() {
-        roadBikesPage.clickAnyBike();
-    }
-
-    @Then("^chosen bike is opened$")
-    public void chosenBikesIsOpened() {
-
-        Assert.assertEquals(roadBikesPage.isBikeTitleDisplayed(), true);
+    @When("^hovers over the picture with the category bike$")
+    public void BikesPage() {
+        BikesPage.ShopNowDisplayed();
 
     }
 
-    @And("^increase quantity$")
-    public void increase() {
-        roadBikesPage.increaseQuantity();
-    }
+    @Then("^inscription 'show now' appears on the picture$")
+    public void ShopNow() {
 
-    @When("^add to basket$")
-    public void addToBasket() {
-        roadBikesPage.clickOnQuickBuyButton();
+        Assert.assertEquals(BikesPage.ShopNowDisplayed(), true);
 
     }
 
-    @Then("^error is displayed$")
-    public void errorIsDisplayed() {
-        Assert.assertEquals(roadBikesPage.errorIsDisplayed(), true);
+    @When("^hovers over the picture with the category bike$")
+    public void showNow() {
+        Assert.assertEquals(BikesPage.ShopNowDisplayed(), true);
     }
 
-    @And("^return to main page$")
-    public void goHome() {
-        waitPage();
-        roadBikesPage.clickHomeLink();
-    }
+
+
+
 
     // homework steps
 
     @Given("login page")
-    public void loginPage()
-    {
-        getDriver().get(LOGIN_URL);
+    public void loginPage() {
+        String LOGIN_URL;
+        getDriver().get(START_URL);
     }
 
     @And("^go to login page$")
@@ -111,7 +99,7 @@ public class Steps {
         mainFactoryPage.clickOnAccountLink();
     }
 
-    @When("customer enters incorrect email {string}")
+    @When("user enters incorrect email {string}")
     public void enterEmail(String email) {
         loginPage.enterEmail(email);
     }
@@ -148,3 +136,33 @@ public class Steps {
     public void logout() {
         accountPage.clickSignOutButton();
     }
+
+    @Then("inscription {string} appears on the picture")
+    public void inscriptionAppearsOnThePicture(String arg0) {
+        
+    }
+
+    @And("user click on the category picture")
+    public void userClickOnTheCategoryPicture() {
+        
+    }
+
+    @Then("category bikesPage open")
+    public void categoryBikesPageOpen() {
+        
+    }
+
+    @And("press on the button {string}")
+    public void pressOnTheButton(String arg0) {
+        
+    }
+
+    @Then("open all filters")
+    public void openAllFilters() {
+        
+    }
+
+    @Then("filters hide")
+    public void filtersHide() {
+    }
+}

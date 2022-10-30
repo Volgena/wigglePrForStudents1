@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class Waiters {
 
     public static void waitForElementVisible(WebDriver driver, int timeout, WebElement webElement) {
-        new WebDriverWait(driver, timeout).pollingEvery(2, TimeUnit.SECONDS)
-                .until(ExpectedConditions.visibilityOf(webElement));
+       new WebDriverWait(driver, timeout).pollingEvery(2, TimeUnit.SECONDS)
+               .until(ExpectedConditions.visibilityOf(webElement));
     }
 }

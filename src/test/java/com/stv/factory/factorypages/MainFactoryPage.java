@@ -2,11 +2,15 @@ package com.stv.factory.factorypages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.w3c.dom.html.HTMLInputElement;
 
 public class MainFactoryPage extends FactoryPage {
 
     @FindBy(id = "accountLink")
     private WebElement accountLink;
+
+    @FindBy(xpath = "//a[text() = 'Bikes']")
+    private WebElement bikesButton;
 
     @FindBy(xpath = "//button[contains(text(),'Accept All Cookies')]")
     private WebElement trustButton;
@@ -25,5 +29,6 @@ public class MainFactoryPage extends FactoryPage {
 
 
     public void goToBikesPage() {
+        bikesButton.click();
     }
 }

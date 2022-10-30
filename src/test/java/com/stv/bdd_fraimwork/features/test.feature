@@ -1,3 +1,4 @@
+
 Scenario Outline: incorrect e-mail
 Given	page for registration
 When	user chooses field  'Sign in'
